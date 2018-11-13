@@ -24,22 +24,3 @@ set(gumbo_query_SOURCE_DIRECTORY ${PROJECT_SOURCE_DIR}/src)
 
 # Add source subdirectories.
 add_subdirectory(src)
-add_subdirectory(test)
-
-enable_testing()
-add_test(NAME "ID Test" COMMAND id_test)
-
-# Generate Doxygen documentation.
-set(DOXYGEN_CONFIG_FILE Doxyfile.d)
-find_package(Doxygen)
-if(DOXYGEN_FOUND)
-	if(EXISTS ${PROJECT_SOURCE_DIR}/${DOXYGEN_CONFIG_FILE})
-		add_custom_target(
-			doc
-			${DOXYGEN_EXECUTABLE}
-			${PROJECT_SOURCE_DIR}/${DOXYGEN_CONFIG_FILE}
-			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-			COMMENT "Generating API documentation with Doxygen" VERBATIM
-		)
-	endif(EXISTS ${PROJECT_SOURCE_DIR}/${DOXYGEN_CONFIG_FILE})
-endif(DOXYGEN_FOUND)
