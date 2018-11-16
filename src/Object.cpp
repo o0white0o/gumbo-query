@@ -13,7 +13,7 @@
  *  
  **/
 
-#include "Object.h"
+#include "../include/gq/Object.h"
 
 CObject::CObject()
 {
