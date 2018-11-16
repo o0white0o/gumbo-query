@@ -49,6 +49,6 @@ install(TARGETS gq
 file(GLOB HEAD_FILES include/gq/*.h)
 install(FILES
         ${HEAD_FILES} DESTINATION
-        /include/gq
+        ${CMAKE_INSTALL_PREFIX}/include/gq
         )
 
