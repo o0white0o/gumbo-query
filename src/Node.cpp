@@ -13,9 +13,9 @@
  *  
  **/
 
-#include "Node.h"
-#include "Selection.h"
-#include "QueryUtil.h"
+#include "../include/gq/Node.h"
+#include "../include/gq/Selection.h"
+#include "../include/gq/QueryUtil.h"
 
 CNode::CNode(GumboNode* apNode)
 {

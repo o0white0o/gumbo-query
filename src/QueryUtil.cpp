@@ -13,7 +13,7 @@
  *  
  **/
 
-#include "QueryUtil.h"
+#include "../include/gq/QueryUtil.h"
 
 std::string CQueryUtil::tolower(std::string s)
 {

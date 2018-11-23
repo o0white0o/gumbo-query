@@ -1,0 +1,3 @@
+[submodule "dependency/gumbo-parser"]
+	path = dependency/gumbo-parser
+	url = https://github.com/o0white0o/gumbo-parser.git
