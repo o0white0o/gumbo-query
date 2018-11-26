@@ -2,7 +2,6 @@ project(gumbo_query CXX)
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
 include(CTest)
-include(cmake/PreventInSourceBuilds.cmake)
 
 # Debug build.
 set(CMAKE_VERBOSE_MAKEFILE ON)
@@ -17,12 +16,12 @@ file(MAKE_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
 # Add the cmake modules directory to our module path.
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
-find_package(Gumbo REQUIRED)
 
 # Set our library source directory.
 set(gumbo_query_SOURCE_DIRECTORY ${PROJECT_SOURCE_DIR}/src)
 
 # Add source subdirectories.
+add_subdirectory(dependency/gumbo-parser)
 add_subdirectory(src)
 add_subdirectory(test)
 
