@@ -1,31 +1,36 @@
 # libgumbo_query
 
-file(GLOB SRC_FILES *.cpp)
-file(GLOB HEAD_FILES *.h)
-add_library(gq STATIC
-        ${HEAD_FILES}
-        ${SRC_FILES}
-        )
+file(GLOB HEADERS_FILES 
+		*.h
+		)
 
+file(INSTALL ${HEADERS_FILES} DESTINATION ${CMAKE_BINARY_DIR}/include/gq)
+		
+file(GLOB SOURCES_FILES 
+		*.cpp
+		)
+
+add_library(gq STATIC
+        ${HEADERS_FILES}
+        ${SOURCES_FILES}
+        )
 
 target_link_libraries(gq
         PUBLIC
         gumbo
         )
 
-file(INSTALL
-        ${HEAD_FILES} DESTINATION
-        ${CMAKE_BINARY_DIR}/include/gq
-        )
 target_include_directories(gq
         PUBLIC
         $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include>
         $<INSTALL_INTERFACE:include>
+		# For support include different way. (gq/Document.h or Document.h)
+		$<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/include/gq>
+        $<INSTALL_INTERFACE:include/gq>
         )
 
-install(FILES
-        ${HEAD_FILES} DESTINATION
-        ${CMAKE_INSTALL_PREFIX}/include/gq
+install(FILES ${HEADERS_FILES} 
+		DESTINATION ${CMAKE_INSTALL_PREFIX}/include/gq
         )
 
 install(TARGETS gq
@@ -33,5 +38,5 @@ install(TARGETS gq
         LIBRARY DESTINATION "lib"
         ARCHIVE DESTINATION "lib"
         RUNTIME DESTINATION "bin"
-        INCLUDES DESTINATION "${CMAKE_INSTALL_PREFIX}/include/gq"
+        INCLUDES DESTINATION "include/gq"
         )
